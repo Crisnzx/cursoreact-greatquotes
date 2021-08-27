@@ -1,15 +1,27 @@
 import { Route, useParams } from 'react-router';
 import Comments from '../components/comments/Comments';
+import HighlightedQuote from '../components/quotes/HighlightedQuote';
+import { DUMMY_QUOTES } from '../store/dummy-quotes';
 
 export default function QuoteDetails() {
   const params = useParams();
+  console.log(params);
   const quoteID = params.id;
-  console.log(quoteID);
+
+  const quote = DUMMY_QUOTES.find((quote) => quote.id === quoteID);
+
+  if (!quote) {
+    return (
+      <div className="error-msg">
+        <h2>No quote found.</h2>
+      </div>
+    );
+
+  }
 
   return (
     <section>
-      <h2>Quote Details page</h2>
-      <p>Quote ID: {quoteID}</p>
+      <HighlightedQuote author={quote.author} text={quote.text} />
       <Route path={`/quotes/${quoteID}/comments`}>
         <Comments />
       </Route>

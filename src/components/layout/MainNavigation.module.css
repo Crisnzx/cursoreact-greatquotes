@@ -8,9 +8,15 @@
   background-color: #008080;
 }
 
+.logo-link {
+  text-decoration: none;
+  margin: 21px 0;
+}
+
 .logo {
   font-size: 2rem;
   color: white;
+  margin: 0;
 }
 
 .nav ul {
