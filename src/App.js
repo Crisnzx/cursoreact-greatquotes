@@ -39,4 +39,8 @@ I used Switch, exact and sort to solve that
 But there was another issue, when I tried to use activeClassName on NavLink component.
 The active class didn't get out, so I had to change the path to /new-quote
 I asked a question in the course lecture and I am still waiting for the answer.
+
+ON Route we can use variables /:something/
+So there will be a match for any value passed as a parameter
+
 */

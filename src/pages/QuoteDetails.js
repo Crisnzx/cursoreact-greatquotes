@@ -1,14 +1,17 @@
-import { Route, useParams } from 'react-router';
+import { Route, useParams, useRouteMatch } from 'react-router';
+import { Link } from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
-import { DUMMY_QUOTES } from '../store/dummy-quotes';
+import useQuotes from '../hooks/use-quotes';
 
 export default function QuoteDetails() {
   const params = useParams();
-  console.log(params);
+  const match = useRouteMatch();
   const quoteID = params.id;
+  const { quotes } = useQuotes();
+  console.log(quoteID);
 
-  const quote = DUMMY_QUOTES.find((quote) => quote.id === quoteID);
+  const quote = quotes.find(quote => quote.id === quoteID);
 
   if (!quote) {
     return (
@@ -16,13 +19,20 @@ export default function QuoteDetails() {
         <h2>No quote found.</h2>
       </div>
     );
-
   }
 
   return (
     <section>
       <HighlightedQuote author={quote.author} text={quote.text} />
-      <Route path={`/quotes/${quoteID}/comments`}>
+      {/* Condicional rendering bases on the URL, so we don't need to manage complex state */}
+      <Route exact path={match.path}>
+        <div className="centered">
+          <Link className="btn--flat" to={`${match.url}/comments`}>
+            Load Comments
+          </Link>
+        </div>
+      </Route>
+      <Route path={`${match.path}/comments`}>
         <Comments />
       </Route>
     </section>
