@@ -9,7 +9,7 @@ const QuoteItem = props => {
     <li className={classes.item}>
       <figure>
         <blockquote>
-          <p>{props.text}</p>
+          <p>"{props.text}"</p>
         </blockquote>
         <figcaption>{props.author}</figcaption>
       </figure>

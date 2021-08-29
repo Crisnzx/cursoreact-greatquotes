@@ -6,9 +6,9 @@ import classes from './QuoteList.module.css';
 function sortQuotes(quotes, ascending) {
   return quotes.sort((quoteA, quoteB) => {
     if (ascending) {
-      return quoteA.id > quoteB.id ? 1 : -1;
+      return quoteA.author > quoteB.author ? 1 : -1;
     } else {
-      return quoteA.id < quoteB.id ? 1 : -1;
+      return quoteA.author < quoteB.author ? 1 : -1;
     }
   });
 }

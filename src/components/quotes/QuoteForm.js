@@ -6,6 +6,16 @@ import InputError from '../UI/InputError';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
 
+function capitalizeAuthorNames(enteredAuthor) {
+  const authorNamesCapitalized = enteredAuthor.split(' ').map(name => {
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+  });
+
+  const concatenatedName = authorNamesCapitalized.join(' ');
+
+  return concatenatedName;
+}
+
 const QuoteForm = props => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -30,13 +40,19 @@ const QuoteForm = props => {
   function submitFormHandler(event) {
     event.preventDefault();
 
-    // optional: Could validate here
     if (!formIsValid) {
+      authorBlurHandler();
+      textBlurHandler();
       alert('You must enter all data');
       return;
     }
 
-    props.onAddQuote({ author: enteredAuthor, text: enteredText });
+    const concatenatedNameCapitalized = capitalizeAuthorNames(enteredAuthor);
+
+    props.onAddQuote({
+      author: concatenatedNameCapitalized,
+      text: enteredText,
+    });
   }
 
   const notShowMessage =
@@ -47,7 +63,6 @@ const QuoteForm = props => {
       <Prompt
         when={!notShowMessage}
         message={location => {
-          console.log(location);
           return `Are you sure you wanna go to ${location.pathname} and lost all your entered data?`;
         }}
       />
