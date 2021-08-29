@@ -30,7 +30,7 @@ export default function AllQuotes() {
     return <p className="centered focused">{error}</p>;
   }
 
-  if (status === completed && (!loadedQuotes || loadedQuotes.length === 0)) {
+  if (status === 'completed' && (!loadedQuotes || loadedQuotes.length === 0)) {
     return <NoQuotesFound />;
   }
 
