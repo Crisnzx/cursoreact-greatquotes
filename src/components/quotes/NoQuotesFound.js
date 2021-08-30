@@ -4,9 +4,9 @@ import classes from './NoQuotesFound.module.css';
 const NoQuotesFound = () => {
   return (
     <div className={classes.noquotes}>
-      <p>No quotes found!</p>
+      <p>Nenhuma citação encontrada!</p>
       <Link to="/new-quote" className="btn">
-        Add a Quote
+        Adicione uma citação
       </Link>
     </div>
   );

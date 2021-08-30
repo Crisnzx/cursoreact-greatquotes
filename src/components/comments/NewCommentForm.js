@@ -24,7 +24,7 @@ const NewCommentForm = props => {
 
     // optional: Could validate here
     if (enteredComment.trim() === '') {
-      alert('You must enter a valid comment!');
+      alert('Você deve enviar um comentário válido!');
       return;
     }
     // send comment to server
@@ -44,11 +44,11 @@ const NewCommentForm = props => {
         </div>
       )}
       <div className={classes.control} onSubmit={submitFormHandler}>
-        <label htmlFor="comment">Your Comment</label>
+        <label htmlFor="comment">Seu comentário</label>
         <textarea id="comment" rows="5" ref={commentTextRef}></textarea>
       </div>
       <div className={classes.actions}>
-        <button className="btn">Add Comment</button>
+        <button className="btn">Adicionar comentário</button>
       </div>
     </form>
   );

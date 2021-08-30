@@ -35,3 +35,21 @@
   font-style: italic;
   color: #566d6d;
 }
+
+@media (max-width: 768px) {
+  .item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item figure {
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .item a {
+    width: 100%;
+    text-align: center;
+  }
+}

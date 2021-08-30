@@ -75,7 +75,7 @@ const QuoteForm = props => {
           )}
 
           <div className={classes.control}>
-            <label htmlFor="author">Author</label>
+            <label htmlFor="author">Autor</label>
             <input
               onChange={authorChangeHandler}
               onBlur={authorBlurHandler}
@@ -83,22 +83,24 @@ const QuoteForm = props => {
               id="author"
             />
             {authorHasError && (
-              <InputError message="Author must not be empty" />
+              <InputError message="Autor deve ser preenchido." />
             )}
           </div>
           <div className={classes.control}>
-            <label htmlFor="text">Text</label>
+            <label htmlFor="text">Citação</label>
             <textarea
               onChange={textChangeHandler}
               onBlur={textBlurHandler}
               id="text"
               rows="5"
             ></textarea>
-            {textHasError && <InputError message="Text must not be empty" />}
+            {textHasError && (
+              <InputError message="Citação deve ser preenchida." />
+            )}
           </div>
           <div className={classes.actions}>
             <button onClick={() => setHasSubmitted(true)} className="btn">
-              Add Quote
+              Adicionar Citação
             </button>
           </div>
         </form>

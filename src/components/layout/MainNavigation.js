@@ -11,12 +11,12 @@ export default function MainNavigation() {
         <ul>
           <li>
             <NavLink activeClassName={classes.active} to="/quotes">
-              All Quotes
+              Citações
             </NavLink>
           </li>
           <li>
             <NavLink activeClassName={classes.active} to="/new-quote">
-              New Quote
+              Nova citação
             </NavLink>
           </li>
         </ul>

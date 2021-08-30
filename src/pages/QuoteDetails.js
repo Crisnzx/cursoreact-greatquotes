@@ -35,7 +35,7 @@ export default function QuoteDetails() {
   }
 
   if (!loadedQuote.text) {
-    return <p>No quote found.</p>;
+    return <p>A citação não foi encontrada.</p>;
   }
 
   return (
@@ -45,7 +45,7 @@ export default function QuoteDetails() {
       <Route exact path={match.path}>
         <div className="centered">
           <Link className="btn--flat" to={`${match.url}/comments`}>
-            Load Comments
+            Carregar comentários
           </Link>
         </div>
       </Route>

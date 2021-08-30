@@ -19,7 +19,7 @@ export default function NewQuote() {
     */
       history.push('/quotes');
     }
-  }, [status]);
+  }, [status, history]);
 
   async function addQuoteHandler(quoteData) {
     sendRequest(quoteData);

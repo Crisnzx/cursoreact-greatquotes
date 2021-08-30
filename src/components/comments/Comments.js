@@ -34,7 +34,6 @@ const Comments = () => {
   }
 
   if (status === 'completed' && loadedComments && loadedComments.length > 0) {
-    console.log(loadedComments);
     commentsJsx = <CommentsList comments={loadedComments} />;
   }
 
@@ -42,7 +41,7 @@ const Comments = () => {
     status === 'completed' &&
     (!loadedComments || loadedComments.length === 0)
   ) {
-    commentsJsx = <p className="centered">No comments added yet.</p>;
+    commentsJsx = <p className="centered">Nenhum comentário adicionado.</p>;
   }
 
   const addedCommentHandler = useCallback(() => {
@@ -52,10 +51,10 @@ const Comments = () => {
 
   return (
     <section className={classes.comments}>
-      <h2>User Comments</h2>
+      <h2>Comentários dos usuários</h2>
       {!isAddingComment && (
         <button className="btn" onClick={startAddCommentHandler}>
-          Add a Comment
+          Adicionar um comentário
         </button>
       )}
       {isAddingComment && (

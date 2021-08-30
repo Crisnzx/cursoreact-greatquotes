@@ -40,7 +40,7 @@ const QuoteList = props => {
     <Fragment>
       <div className={classes.sorting}>
         <button onClick={changeSortHandler}>
-          Sort {isAscending ? 'Descending' : 'Ascending'}
+          Ordenar {isAscending ? 'Descendente' : 'Ascendente'}
         </button>
       </div>
       <ul className={classes.list}>

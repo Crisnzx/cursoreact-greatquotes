@@ -14,7 +14,7 @@ const QuoteItem = props => {
         <figcaption>{props.author}</figcaption>
       </figure>
       <Link to={`${location.pathname}/${props.id}`} className="btn">
-        View Fullscreen
+        Ver detalhes
       </Link>
     </li>
   );
