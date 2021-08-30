@@ -1,30 +1,41 @@
+import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import AllQuotes from './pages/AllQuotes';
-import QuoteDetails from './pages/QuoteDetails';
-import NewQuote from './pages/NewQuote';
 import Layout from './components/layout/Layout';
-import NotFound from './pages/NotFound';
+import LoadingSpinner from './components/UI/LoadingSpinner';
+
+const AllQuotes = React.lazy(() => import('./pages/AllQuotes'));
+const NewQuote = React.lazy(() => import('./pages/NewQuote'));
+const QuoteDetails = React.lazy(() => import('./pages/QuoteDetails'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
     <Layout>
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/quotes" />
-        </Route>
-        <Route exact path="/quotes">
-          <AllQuotes />
-        </Route>
-        <Route path="/new-quote">
-          <NewQuote />
-        </Route>
-        <Route path="/quotes/:id">
-          <QuoteDetails />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
+      <Suspense
+        fallback={
+          <div className="centered">
+            <LoadingSpinner />
+          </div>
+        }
+      >
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/quotes" />
+          </Route>
+          <Route exact path="/quotes">
+            <AllQuotes />
+          </Route>
+          <Route path="/new-quote">
+            <NewQuote />
+          </Route>
+          <Route path="/quotes/:id">
+            <QuoteDetails />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Suspense>
     </Layout>
   );
 }
@@ -40,7 +51,15 @@ But there was another issue, when I tried to use activeClassName on NavLink comp
 The active class didn't get out, so I had to change the path to /new-quote
 I asked a question in the course lecture and I am still waiting for the answer.
 
-ON Route we can use variables /:something/
+On Route we can use variables /:something/
 So there will be a match for any value passed as a parameter
+
+DEPLOYING THE APP
+
+Lazy Loading - Load code only when it's needed
+When we open a site, we don't need to have the whole content loaded in our machine right away. 
+That's not the best user experience, because the loading page delay will be longer.
+So the Lazy Loading helps us to solve that issue. First of all, the code for displaying the AllQuotes page will be
+downloaded, and if the user accesses another page, that page's content will be downloaded.
 
 */
