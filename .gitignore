@@ -3,3 +3,8 @@
 
 # production
 /build
+
+# firebase config
+.firebaserc
+firebase.json
+/.firebase
